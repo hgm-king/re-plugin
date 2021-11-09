@@ -1,0 +1,31 @@
+{
+  "name": "Ostrich dev",
+  "description": "Speed up your workflow!",
+  "version": "0.0.3",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "/images/ostrichDev.png"
+    }
+  },
+  "content_scripts": [
+      {
+          "matches": ["https://*/*"],
+          "js": ["ExtPay.js"],
+          "run_at": "document_start"
+      }
+  ],
+  "icons": {
+    "128": "/images/ostrichDev.png"
+  },
+  "options_page": "options.html",
+  "content_security_policy": {
+    "unsafe-eval": "script-src 'self'",
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
